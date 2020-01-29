@@ -3,7 +3,10 @@ package com.example.consumindorestapi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView texto = findViewById(R.id.nome);
-        String retorno = null;;
+        ArrayList<String> retorno = null;;
 
         try {
             retorno = new HttpRequisition().execute().get();
@@ -22,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(retorno != null){
-            texto.setText(retorno);
+            Log.i("teste" ," "+ retorno.size());
+        }else{
+            Log.i("erro"," erro");
         }
     }
 
