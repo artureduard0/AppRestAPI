@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import android.os.Build;
@@ -45,7 +46,7 @@ public class HttpRequisition extends AsyncTask<Void, Void, ArrayList<Posts>> {
             // Verifica se a API está disponível
             if (myConnection.getResponseCode() == 200) {
                 InputStream responseBody = myConnection.getInputStream();
-                InputStreamReader responseBodyReader = new InputStreamReader(responseBody, "UTF-8");
+                InputStreamReader responseBodyReader = new InputStreamReader(responseBody, StandardCharsets.UTF_8);
 
                 // Transforma de InputStreamReader em String
                 Scanner sc = new Scanner(responseBodyReader);
@@ -63,10 +64,12 @@ public class HttpRequisition extends AsyncTask<Void, Void, ArrayList<Posts>> {
 
                     JSONObject objTitle = jsonObject.getJSONObject("title");
                     JSONArray arrTitle = objTitle.toJSONArray(objTitle.names());
+                    assert arrTitle != null;
                     String title = arrTitle.getString(0);
 
                     JSONObject obgExcerpt = jsonObject.getJSONObject("excerpt");
                     JSONArray arrExcerpt = obgExcerpt.toJSONArray(obgExcerpt.names());
+                    assert arrExcerpt != null;
                     String excerpt = arrExcerpt.getString(0);
 
                     String author = jsonObject.getString("author");

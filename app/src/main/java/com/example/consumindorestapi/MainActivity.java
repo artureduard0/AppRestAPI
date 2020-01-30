@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -20,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         // Lista a ser exibida na tela
         ListView list  = findViewById(R.id.list);
         // Lista que será retornada da API
-        ArrayList<Posts> retorno = null;;
+        ArrayList<Posts> retorno = null;
 
         try {
             retorno = new HttpRequisition().execute().get();

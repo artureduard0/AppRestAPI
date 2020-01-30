@@ -9,7 +9,7 @@ public class Posts {
     private String author;
     private int comments_total;
 
-    public Posts(int id, String title, String excerpt, String author, int comments_total) {
+    Posts(int id, String title, String excerpt, String author, int comments_total) {
         // Cria o objeto removendo partes do HTML que são retornadas pela API
         this.id = id;
         if(title.contains(";")){
